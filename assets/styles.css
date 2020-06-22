@@ -1,0 +1,44 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+body {
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  margin: 0px;
+  display: flex;
+  height: 100vw;
+  width: 100vh;
+  background-color: #6f76d8;
+}
+
+#startBtn {
+  background-color: yellow;
+}
+
+.btn {
+  background-color: #85be19;
+  border-radius: 15px;
+  padding: 10px 10px;
+}
+
+.btn:hover {
+  border-color: blue;
+  background-color: lightgreen;
+}
+
+.container {
+  width: 300px;
+  background-color: white;
+  padding: 10px;
+}
+
+#quiz-timer {
+  background-color: white;
+}
+
+.responses {
+  display: grid;
+}
