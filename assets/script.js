@@ -62,21 +62,20 @@ var responseA = document.getElementById("a")
 var responseB = document.getElementById("b")
 var responseC = document.getElementById("c")
 var responseD = document.getElementById("d")
-
+var highScore = document.getElementById("hs")
+var highId = document.getElementById("id")
 
 
 function startQuiz() {
-    var timeLeft = 120;
-    // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
+    var timeLeft = 320;
     var timeInterval = setInterval(function () {
         timeLeft = timeLeft - 1
         timerEl.innerHTML = timeLeft + " seconds remaining "
         if (timeLeft <= 0) {
             clearInterval(timeInterval)
+            endScreen()
         }
     }, 1000);
-    var message = "All done! your final score is" + timeLeft
-
     function subtractTime() {
         timeLeft = timeLeft - 5
     }
@@ -109,106 +108,119 @@ function startQuiz() {
 
     function question2() {
         questionEl.innerHTML = "2/5. Where is the correct place to insert a JavaScript?"
-            responseA.innerHTML = "a: The <body section"
-            responseB.innerHTML = "b: The <head> section"
-            responseC.innerHTML = "c: Both the <head> section and the <body> section"
-            responseD.innerHTML = "d: At the end of the css stylesheet"
-
+        responseA.textContent = "a: The <body> section"
+        responseB.textContent = "b: The <head> section"
+        responseC.textContent = "c: Both the <head> section and the <body> section"
+        responseD.innerHTML = "d: At the end of the css stylesheet"
         responseA.addEventListener("click", function () {
             subtractTime()
-
         })
-        responseB.addEventListener("click", function () {
+
+        responseC.removeEventListener("click", function () {
             subtractTime()
 
         })
+
         responseC.addEventListener("click", function () {
             question3()
-
-        })
-        responseD.addEventListener("click", function () {
-            subtractTime()
 
         })
     }
 
     function question3() {
         questionEl.innerHTML = "3/5. How can you add a comment in a JavaScript?"
-            responseA.innerHTML = "a: //This is a comment"
-            responseB.innerHTML = "b: <!--This is a comment-->"
-            responseC.innerHTML = "c:-This is a comment-"
-            responseD.innerHTML = "d: *-This is a comment"
+        responseA.textContent = "a: //This is a comment"
+        responseB.textContent = "b: <!--This is a comment-->"
+        responseC.textContent = "c:-This is a comment-"
+        responseD.textContent = "d: *-This is a comment"
 
-        responseA.addEventListener("click", function () {
-            question4()
-
-        })
-        responseB.addEventListener("click", function () {
-            subtractTime()
+        responseC.removeEventListener("click", function () {
+            question3()
 
         })
         responseC.addEventListener("click", function () {
             subtractTime()
+        })
+        responseA.removeEventListener("click", function () {
+            subtractTime()
 
         })
-        responseD.addEventListener("click", function () {
-            subtractTime()
+
+        responseA.addEventListener("click", function () {
+            question4()
 
         })
     }
 
     function question4() {
         questionEl.innerHTML = " 4/5. How do you add a comment in Javascript to have more than one line?"
-            responseA.innerHTML = "a: /* This comment has more than one line */"
-            responseB.innerHTML = "b: <!-- This comment has more than one line -->"
-            responseC.innerHTML = "c: //This comment has more than one line//"
-            responseD.innerHTML = "d: /!This comment has more than one line!/"
+        responseA.textContent = "a: /* This comment has more than one line */"
+        responseB.textContent = "b: <!-- This comment has more than one line -->"
+        responseC.textContent = "c: //This comment has more than one line//..   "
+        responseD.textContent = "d: /!This comment has more than one line!/"
+
+        responseC.removeEventListener("click", function () {
+            question3()
+
+        })
+
+        responseA.removeEventListener("click", function () {
+            question4()
+
+        })
+
 
         responseA.addEventListener("click", function () {
             question5()
 
         })
-        responseB.addEventListener("click", function () {
-            subtractTime()
 
-        })
-        responseC.addEventListener("click", function () {
-            subtractTime()
-
-        })
-        responseD.addEventListener("click", function () {
-            subtractTime()
-
-        })
     }
 
     function question5() {
         questionEl.innerHTML = "5/5. How do you declare a JavaScript variable?"
-            responseA.innerHTML = "v carName"
-            responseB.innerHTML = "var carName"
-            responseC.innerHTML = "variable carName"
-            responseD.innerHTML = "!v carName"
+        responseA.innerHTML = "v carName"
+        responseB.innerHTML = "var carName"
+        responseC.innerHTML = "variable carName"
+        responseD.textContent = "!v carName"
 
+        responseA.removeEventListener("click", function () {
+            question5()
+
+        })
+        responseC.removeEventListener("click", function () {
+            question3()
+
+        })
         responseA.addEventListener("click", function () {
             subtractTime()
 
         })
+        responseB.removeEventListener("click", function () {
+            subtractTime()
+        })
         responseB.addEventListener("click", function () {
             endScreen()
         })
-        responseC.addEventListener("click", function () {
-            subtractTime()
-
-        })
-        responseD.addEventListener("click", function () {
-            subtractTime()
-
-        })
     }
+        function endScreen() {
+            var highScore = timeLeft
+            var highId = document.getElementById("idsubmit")
+            localStorage.setItem("hs", highScore);
+            localStorage.setItem("id", highId);
 
-    function endScreen()
+            questionEl.innerHTML = "Game Over"
+            document.getElementById("a").style.visibility = "hidden"
+            document.getElementById("b").style.visibility = "hidden"
+            document.getElementById("c").style.visibility = "hidden"
+            document.getElementById("d").style.visibility = "hidden"
+            displayMessage()
+        }
+        function displayMessage() {
+            questionEl.innerHTML = "Congrats!" + highId + "your final score is" + timeLeft
+        }
+
 }
-
 
 startButton.onclick = startQuiz;
 
