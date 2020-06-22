@@ -7,4 +7,7 @@
 * local storage
 * high scores
 
+
+* Github: https://github.com/suwanaloet/SuwanaloetCodeQuiz
+* Github Deploy: https://suwanaloet.github.io/SuwanaloetCodeQuiz/index.html
 * ![Project Screenshot](./assets/example_picture.png)
