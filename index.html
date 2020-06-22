@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Code Quiz!</title>
+  <link rel="stylesheet" href="./assets/styles.css" />
+</head>
+
+<body>
+  <div id= "hs">Highscore:</div>
+  <div id= "id">
+    <input type= "text" name = "id"/>
+    <button id= "idsubmit">Submit ID</button>
+  </div>
+  <div class="container">
+    <div>
+      <h1 class="hero">Code Quiz!</h1>
+      <h2 class="tutorial"> Try to answer all the questions within the time limit! The quicker you answer, the more time
+        left, the higher your score. Incorrect answers will take time off the clock.</h2>
+      <button id="startBtn"> Quiz Start!</button>
+      <h2 id="quiz-timer"></h2>
+    </div>
+    <div id="questionbox">
+      <div id="question"> Question:</div>
+      <div class="responses">
+        <button class="btn" id="a">Response A</button>
+        <button class="btn" id="b">Response B</button>
+        <button class="btn" id="c">Response C</button>
+        <button class="btn" id="d">Response D</button>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="./assets/script.js"></script>
+
+</body>
+
+</html>
